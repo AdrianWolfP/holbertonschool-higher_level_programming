@@ -2,8 +2,8 @@
 import random
 number = random.randint(-1000, 1000)
 last)digit - (abs(number) % 10)
-str1 = "Last digit of "
-str2 = "is "
+    str1 = "Last digit of "
+    str2 = "is "
 great_str = "and is greater than 5"
 zero_str = "and is 0"
 less_str = "and is less than 6 and not 0"
