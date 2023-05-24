@@ -1,0 +1,47 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+(string as input)
+>>> text_indentation("Have you tried coffee? I like many types: iced, hot, latte. No matter what I have I always have cream.")
+Have you tried coffee?
+<BLANKLINE>
+I like many types:
+<BLANKLINE>
+iced, hot, latte.
+<BLANKLINE>
+No matter what I have I always have cream.
+
+(int as input)
+>>> text_indentation(12)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+(float as input)
+>>> text_indentation(12.3)
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+(inf as input)
+>>> text_indentation(float('inf'))
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+(nan as input)
+>>> text_indentation(float('nan'))
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
+
+(no input)
+>>> text_indentation()
+Traceback (most recent call last):
+    ...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+(tuple as input)
+>>> text_indentation((1, 2, 3))
+Traceback (most recent call last):
+    ...
+TypeError: text must be a string
