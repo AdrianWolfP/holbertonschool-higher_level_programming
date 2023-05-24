@@ -1,18 +1,22 @@
 #!/usr/bin/python3
-"""Class that creates a class, square"""
+"""This module creates a class Square
+"""
 
 
 class Square:
-    """Fucntion creates a private instance size"""
+    """This class is an empty class
+    """
     def __init__(self, size=0):
-        """Intializes a squre"""
-        if not isinstance(size, int):
-            raise TypeError("Size must be an integer")
-        if size < 0:
-            raise ValueError("Size must be >= 0")
-        self.__size = size
+        """This function creates a private instance size
+        """
+        if type(size) is not int:
+            raise TypeError("size must be an integer")
+        elif size < 0:
+            raise ValueError("size must be >= 0")
+        else:
+            self.__size = size
 
     def area(self):
-        """fucntion that returns current square area"""
-        return self._size ** 2
-    
+        """This function returns the current square area
+        """
+        return self.__size ** 2    
