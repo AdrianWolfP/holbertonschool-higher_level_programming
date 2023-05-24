@@ -1,8 +1,11 @@
 #!/usr/bin/python3
-"""class that creates a class, square"""
+"""Class that creates a class, square"""
+
+
 class Square:
-    """fucntion creates a private instance size"""
+    """Fucntion creates a private instance size"""
     def __init__(self, size=0):
+        """Intializes a squre"""
         if not isinstance(size, int):
             raise TypeError("Size must be an integer")
         if size < 0:
@@ -12,3 +15,4 @@ class Square:
     def area(self):
         """fucntion that returns current square area"""
         return self._size ** 2
+    

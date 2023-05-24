@@ -1,9 +1,15 @@
 #!/usr/bin/python3
+"""Empty class that defines a square"""
+
+
 class Square:
+    """Class defines a square"""
     def __init__(self, size=0):
+        """Initializes a simple square"""
         self.__size = size
 
     def area(self):
+        """Area of square"""
         return self.__size ** 2
     
     @property
@@ -24,3 +30,4 @@ class Square:
             else:
                 for i in range(self.__size):
                     print("#" * self.__size)
+                    
