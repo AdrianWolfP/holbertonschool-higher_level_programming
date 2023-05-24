@@ -1,5 +1,12 @@
 #!/usr/bin/python3
+"""module that creates a class, square"""
+
+
+class Square:
+    """class that creates a private instance attribute size"""
+
 def __init__(self, size=0):
+    """function that creates a private instance size"""
     if not isinstance(size, int):
         raise TypeError("Size must be an integer")
     if size < 0:
@@ -7,6 +14,7 @@ def __init__(self, size=0):
     self.__size = size
 
 def area(self):
+    """area of square"""
     return self.__size
 
 def size(self):
