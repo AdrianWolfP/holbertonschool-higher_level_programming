@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-class Square
-"""Module that creates an empty class, Square"""
-    """"class is an empty class"""
+"""An empty class that defines a square"""
+
+
+class Square:
+    """Class defines a square"""
     pass
