@@ -1,0 +1,48 @@
+>>> MyList = __import__('1-my_list').MyList
+
+(list of positive ints)
+>>> my_list = MyList()
+>>> my_list.append(7)
+>>> my_list.append(3)
+>>> my_list.append(1)
+>>> my_list.append(3)
+>>> my_list.print_sorted()
+[1, 3, 3, 7]
+
+(list of positive and negative ints)
+>>> my_list = MyList()
+>>> my_list.append(-1)
+>>> my_list.append(3)
+>>> my_list.append(7)
+>>> my_list.append(-3)
+>>> my_list.append(3)
+>>> my_list.print_sorted()
+[-3, -1, 3, 3, 7]
+
+(list of negative ints)
+>>> my_list = MyList()
+>>> my_list.append(-5)
+>>> my_list.append(-3)
+>>> my_list.append(-1)
+>>> my_list.append(-3)
+>>> my_list.print_sorted()
+[-5, -3, -3, -1]
+
+(list with one element)
+>>> my_list = MyList()
+>>> my_list.append(7)
+>>> my_list.print_sorted()
+[7]
+
+(empty list)
+>>> my_list = MyList()
+>>> my_list.print_sorted()
+[]
+
+(list of strings)
+>>> my_list = MyList()
+>>> my_list.append("Golden")
+>>> my_list.append("Doodle")
+>>> my_list.append("Noodles")
+>>> my_list.print_sorted()
+['Doodle', 'Golden', 'Noodles']
