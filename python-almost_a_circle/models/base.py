@@ -3,7 +3,6 @@
 """ This module writes Base class """
 
 import json
-
 class Base:
    
     """ Base class is base of all other classes.
