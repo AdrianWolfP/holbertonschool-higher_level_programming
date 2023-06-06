@@ -5,12 +5,12 @@
 import json
 class Base:
    
-    """ Base class is base of all other classes.
+    """Base class is base of all other classes.
     Should be able to manage id attribute in all your future classes and to avoid duplicating of the same code """
     __nb_object = 0
 
     def __init__(self, id=None):
-        """ class constructor for Base class with 
+        """Class constructor for Base class with 
         optional id attribute that is set to none by default, if id is not, assign public instance
         Args:
         id (int, optional): public instance attribute . Defaults to None.
