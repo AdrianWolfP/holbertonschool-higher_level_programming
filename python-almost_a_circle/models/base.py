@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 
 """ This module writes Base class """
+
 import json
+
+
 class Base:
   """Base class is base of all other classes.
      Should be able to manage id attribute in all your future classes and to avoid duplicating of the same code """
