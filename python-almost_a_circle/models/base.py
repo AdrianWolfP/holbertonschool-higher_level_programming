@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" This module writes base class """
+""" This module writes Base class """
 
 import json
 
@@ -9,7 +9,7 @@ class Base:
     __nb_object = 0
 
     def __init__(self, id=None):
-        """ clasee constructor for base class with 
+        """ class constructor for Base class with 
         optional id attribute that is set to none by default, if id is not, assign public instance
         Args:
         id (int, optional): public instance attribute . Defaults to None.
