@@ -1,118 +1,67 @@
 #!/usr/bin/python3
-""" This module is a unittest for the base class """
-
+''' Unittest for integer_validator '''
 import unittest
-import os
-import io
-import sys
 from models.base import Base
 
 
 class TestBase(unittest.TestCase):
-    """" test class for Base class """
-    # setup and teardown methods are called before and after each test
-    def setup(self):
-        """ Reset the __nb__objects counter
-        print test"""
-        print("Base setUp")
-        self.capture_output = io.StringIO()
-        sys.stdout = self. capture_output
+    ''' Unittest for to_json_string method '''
 
-        Base._base__nb_objects = 0
+    def test_to_json_string_empty(self):
+        json_string = ''
+        list_input = Base.to_json_string(json_string)
+        list_output = '[]'
+        self.assertEqual(list_input, list_output)
+    
+    def test_to_json_string_None(self):
+        json_string = None
+        list_input = Base.to_json_string(json_string)
+        list_output = '[]'
+        self.assertEqual(list_input, list_output)
 
-        self.base = Base()
+    def test__init__id(self):
+        Base._Base__nb_objects = 0
+        r1 = Base(10)
+        self.assertEqual(r1.id, 10)
 
-    def tearDown(self):
-        print("Base tearDown")
+    def test__init__id_None(self):
+        Base._Base__nb_objects = 0
+        r1 = Base(None)
+        self.assertEqual(r1.id, 1)
+    
+    def test__init__id_more(self):
+        Base._Base__nb_objects = 0
+        r1 = Base(10)
+        r2 = Base(7)
+        self.assertEqual(r1.id, 10)
+        self.assertEqual(r2.id, 7)
+    
+    def test__init__id_None_more(self):
+        Base._Base__nb_objects = 0
+        r1 = Base(None)
+        r2 = Base(None)
+        self.assertEqual(r1.id, 1)
+        self.assertEqual(r2.id, 2)
 
-        sys.stdout = sys.__stdout__
-
-        del self.base
-        try:
-            os.remove("Base.json")
-        except FileNotError:
-            pass
-
-    def test_print(self):
-        """ test print method """
-        print("Hello, world!")
-        self.assertEqual(self.capture_output.getvalue(), "Hello, world!\n")
-        print("Hello, world!", file=sys.__stdout__)
-
-        #test id assignment and if it increments correctly
-        def test_id(self):
-            """ Test__init__ method:
-            id assigment in the Base class """
-            self.assertEqual(self.base.id, 1)
-            base2 = Base(50)
-            self.assertEqual(base2.id, 50)
-            base3 = Base()
-            self.assertEqual(base3.id, 2)
-
-        def test_too_many_args(self):
-            """
-            test too many args to init
-            """
-            # test too many args
-            with self.assertRaises(TypeError):
-                Base (1, 1, 1, 1, 1, 1, 1)
-
-        def test_to_json_string(self):
-            """ Test to_json_string method:
-            returns the JSON string representation of list_directories
-            """
-            # test empty list
-            self.assertEqual(Base.to_json_string([]), "[]")
-            # test None
-            self.assertEqual(Base.to_json_string(None), "[]")
-            #test normal list
-            list_directories = [
-                {"id": 1, "width": 2, "height": 3, "x": 4, "y": 5},
-                {"id": 6, "width": 7, "height": 8, "x": 9, "y":10},
-                ]
-            excepted_json = (
-                '[{"id": 1, "width": 2, height": 3, "x": 4, "y": 5}, '
-                '{"id": 6, "width": 7, "height": 8, "x": 9, "y": 10}]')
-            self.assertEqual(Base.to_json_string(list_directories), excepted_json)
-
-        def test_from_json_string(self):
-            """ Test from_json_string method: returns a list of the json string
-            representation json_string
-            """
-            # test empty string
-            self.assertEqual(Base.from_json_string(""), [])
-
-            #test empty list
-            self.assertEqual(Base.from_json_string("[]"), [])
-
-            #test None
-            self.assertEqual(Base.from_json_string(None), [])
-
-            #test normal list
-            json_string = (
-                '[{"id: 1, "width": 2, "height": 3, "x": 4, "y": 5}, '
-                '{"id": 6, "width": 7, "height": 8, "x": 9, "y": 10}]')
-            excepted_list = [
-                {"id": 1, "width": 2, "height": 3, "x": 4, "y": 5},
-                {"id": 6, "width": 7, "height": 8, "x": 9, "y": 10}]
-            self.assertEqual(Base.from_json_string(json_string), excepted_list)
-
-            # test invalid json string
-            with self.assertRaises(valueError):
-                Base.from_json_string("invalid")
-
-        def test_save_to_file(self):
-            """ Test save_to_file method: for base class
-            """
-            # Test checks correct handling of None by creating an empty file
-            Base.save_to_file(None)
-            with open("Base.json", "r", encoding="utf-8") as file:
-                self.assertEqual(file.read(), "[]")
-            # Test correct handling of empty list to create empty file
-            Base.save_to_file([])
-            with open("Base.json", "r", encoding="utf-8") as file:
-                self.assertEqual(file.read(), "[]")
-
+    def test_from_json_string(self):
+        json_string = '[{"id": 89, "width": 10, "height": 4}, \
+{"id": 7, "width": 1, "height": 7}]'
+        list_input = Base.from_json_string(json_string)
+        list_output = [{'id': 89, 'width': 10, 'height': 4},
+                          {'id': 7, 'width': 1, 'height': 7}]
+        self.assertEqual(list_input, list_output)
+    
+    def test_from_json_string_empty(self):
+        json_string = ''
+        list_input = Base.from_json_string(json_string)
+        list_output = []
+        self.assertEqual(list_input, list_output)
+    
+    def test_from_json_string_None(self):
+        json_string = None
+        list_input = Base.from_json_string(json_string)
+        list_output = []
+        self.assertEqual(list_input, list_output)
 
 if __name__ == '__main__':
     unittest.main()
